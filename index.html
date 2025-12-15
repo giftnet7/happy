@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For The One I Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+    --primary: #ff758f;
+    --secondary: #ff7eb3;
+    --dark: #5a2a38;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #fff0f5 0%, #ffeef2 100%);
+    color: #5a2a38;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+/* Header Container */
+.header-container {
+    max-width: 90%;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ffd6e0;
+}
+
+.header-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+/* Typography */
+h1 {
+    font-family: 'cursive', cursive;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: var(--secondary);
+    font-weight: 400;
+}
+
+/* Heart Elements */
+.heart {
+    color: var(--primary);
+    animation: pulse 1.5s infinite;
+    display: inline-block;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Slideshow Styles */
+.slideshow-container {
+ max-width: 800px;
+ position: relative;
+ margin: 2rem auto;
+ border-radius: 12px;
+ overflow: hidden;
+ box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+ /* Added a fixed height to the container to ensure space is reserved */
+ height: 60vh; /* Set a generous height for the container */
+  display: flex;
+  width: 300px;
+  align-items: center;
+ justify-content: center;
+}
+
+.slides 
+{ display: none;
+ width: 100%;
+ /* Changed height to auto and removed max-height */
+ height: 100%; 
+ /* Use 'contain' to ensure the entire image is visible, padding with space if necessary */
+ object-fit: contain; 
+ transition: opacity 1s ease-in-out;
+}
+
+/* Responsive Design Adjustment */
+@media (max-width: 768px) {
+ .header-container {
+ padding: 1.5rem;
+ margin: 1rem auto;
+ }
+ 
+ h1 {
+ font-size: 2rem;
+ }
+ 
+ h2 {
+ font-size: 1.2rem;
+ }
+ 
+ .slideshow-container {
+     height: 50vh; /* Adjusted container height for mobile */
+ }
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* Audio Player Styles */
+.audio-container {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem auto;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.audio-player {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* Heart Rain Background */
+.heart-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.falling-heart {
+    position: absolute;
+    font-size: 20px;
+    color: var(--primary);
+    animation: falling linear infinite;
+}
+
+@keyframes falling {
+    0% {
+        transform: translate(var(--random-x), -10vh) rotate(0deg);
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(var(--random-x), 100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.2rem;
+    }
+    
+    .slides {
+        max-height: 50vh;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Audio Player Container */
+.audio-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.8rem;
+    border-radius: 15px;
+    margin: 2rem auto;
+    max-width: 500px;
+    box-shadow: 0 8px 25px rgba(255, 107, 107, 0.15);
+    border: 1px solid #ffd1d1;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.audio-container:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(255, 107, 107, 0.2);
+}
+
+.audio-container::before {
+    content: '♪';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    color: rgba(255, 107, 107, 0.1);
+    z-index: 0;
+}
+
+/* Custom Audio Player Styling */
+audio {
+    width: 100%;
+    filter: drop-shadow(0 2px 8px rgba(255, 107, 107, 0.2));
+}
+
+/* Style the audio controls */
+audio::-webkit-media-controls-panel {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffebeb 100%);
+    border-radius: 10px;
+    border: 1px solid #ffc7c7;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-mute-button {
+    background-color: #ff6b6b;
+    border-radius: 50%;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+    font-family: 'Montserrat', sans-serif;
+    color: #5a2a27;
+}
+
+audio::-webkit-media-controls-timeline {
+    background-color: #ffd6d6;
+    border-radius: 10px;
+    margin: 0 10px;
+}
+
+audio::-webkit-media-controls-volume-slider {
+    background-color: #ffd6d6;
+    border-radius: 10px;
+}
+
+/* Heart icon next to audio */
+.audio-heart {
+    display: inline-block;
+    margin-left: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-5px) scale(1.1); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+/* Audio Title Styling */
+.audio-title {
+    font-family: 'Playfair Display', serif;
+    color: #ff6b6b;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .audio-container {
+        padding: 1.2rem;
+        max-width: 90%;
+    }
+    
+    audio::-webkit-media-controls-timeline {
+        margin: 0 5px;
+    }
+}
+/* Love Letter Styles */
+.letter-container {
+    max-width: 90%;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.envelope {
+    font-size: 3rem;
+    cursor: pointer;
+    display: inline-block;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+    animation: float 2s ease-in-out infinite;
+}
+
+.envelope:hover {
+    transform: scale(1.1);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.letter-paper {
+    background: #fff9f9;
+    padding: 2rem;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    position: relative;
+    display: none;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #5a2a27;
+    text-align: left;
+    border: 1px solid #ffd6d6;
+}
+
+.letter-paper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to right, #ff758f, #ff7eb3);
+}
+
+.letter-paper::after {
+    content: '';
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffd6d6"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+}
+
+.letter-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 20px;
+}
+
+.letter-signature {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2rem;
+    text-align: right;
+    margin-top: 1.5rem;
+    color: #ff758f;
+}
+
+.show-letter {
+    display: block;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+    </style>
+</head>
+<body>
+      
+
+                
+
+              
+            
+      
+    
+    <!-- Heart Rain Background -->
+    <div class="heart-rain" id="heartRain"></div>
+    
+    <div class="header-container">
+        <h1>Happy birthday girl. Wish you all the best kraliçe. </h1>
+        <h2>Happy 21❤️</h2>
+        
+        <div class="slideshow-container">
+            <img class="slides fade" src="1.jpg" alt="Our memories"> 
+            <img class="slides fade" src="2.jpg">
+            <img class="slides fade" src="3.jpg">
+            <img class="slides fade" src="4.jpg">
+            <img class="slides fade" src="5.jpg">
+            <img class="slides fade" src="6.jpg">
+            <img class="slides fade" src="7.jpg">
+            <img class="slides fade" src="8.jpg">
+            <img class="slides fade" src="9.jpg">
+            <img class="slides fade" src="10.jpg">
+            <img class="slides fade" src="11.jpg">
+            <img class="slides fade" src="12.jpg">
+            <img class="slides fade" src="13.jpg">
+            <img class="slides fade" src="14.jpg">
+            <img class="slides fade" src="15.jpg">
+            <img class="slides fade" src="16.jpg">
+            <img class="slides fade" src="17.jpg">
+            <img class="slides fade" src="18.jpg">
+            <img class="slides fade" src="19.jpg">
+            <img class="slides fade" src="20.jpg">
+          <img class="slides fade" src="21.jpg" alt="Our memories"> 
+            <img class="slides fade" src="22.jpg">
+            <img class="slides fade" src="23.jpg">
+            <img class="slides fade" src="24.jpg">
+            <img class="slides fade" src="25.jpg">
+            <img class="slides fade" src="26.jpg">
+            <img class="slides fade" src="27.jpg">
+            <img class="slides fade" src="28.jpg">
+            <img class="slides fade" src="29.jpg">
+            <img class="slides fade" src="30.jpg">
+           
+
+        </div>
+        
+                  <div class="audio-container">
+    <p class="audio-title"> <span class="audio-heart"></span></p>
+    <audio controls class="audio-player">
+        <source src="3.m4a" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</div>
+        
+</div>
+            
+        </div>
+    </div>
+    
+   <script>
+  function toggleLetter() {
+    const letter = document.getElementById('loveLetter');
+    letter.classList.toggle('show-letter');
+    
+    // Optional: Close when clicking anywhere outside the letter
+    document.addEventListener('click', function closeLetter(e) {
+        if (!letter.contains(e.target) && e.target.className !== 'envelope') {
+            letter.classList.remove('show-letter');
+            document.removeEventListener('click', closeLetter);
+        }
+    });
+}
+
+    function initializePage() {
+        // Initialize all page functionality after password is entered
+        createHeartRain();
+        setInterval(createHeartRain, 3000);
+        
+        // Slideshow functionality
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        // Auto-advance slides
+        setInterval(() => {
+            plusSlides(1);
+        }, 5000);
+        
+        // Update countdown immediately and then every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    }
+
+        
+        // Slideshow functionality
+        let slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("slides");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[slideIndex-1].style.display = "block";
+        }
+        
+        // Auto-advance slides
+        setInterval(() => {
+            plusSlides(1);
+        }, 5000);
+        
+function updateCountdown() {
+    // Set your relationship start date here (Year, Month-1, Day)
+    // Note: Months are 0-indexed (0=January, 11=December)
+    const startDate = new Date(2022, 1, 7); // Example: January 1, 2021
+    
+    const now = new Date();
+    const diff = now - startDate;
+    
+    // Calculate years
+    const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+    
+    // Calculate remaining months after years
+    const months = Math.floor((diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30.44));
+    
+    // Calculate remaining days after months
+    const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+    
+    // Calculate hours, minutes, seconds
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 12)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    
+    // Update the display
+    document.getElementById("years").textContent = years;
+    document.getElementById("months").textContent = Math.floor(months);
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+}
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html
